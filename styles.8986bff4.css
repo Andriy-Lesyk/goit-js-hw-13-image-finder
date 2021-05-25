@@ -1,0 +1,27 @@
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+}
+.stats{
+  display: flex;
+  flex-direction: column;
+}
+.stats-item{
+  display: block;
+  margin: 0;
+  
+}
+.photo-card{
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+.inp{
+  margin-left: 40px;
+  margin-top: 40px;
+}
+.btn{
+  margin-bottom: 40px;
+  margin-left: 40px;
+}
+
+/*# sourceMappingURL=/styles.8986bff4.css.map */
