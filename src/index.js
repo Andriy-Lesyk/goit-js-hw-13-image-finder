@@ -4,7 +4,7 @@ import debounce from "lodash.debounce";
 import * as basicLightbox from 'basiclightbox';
 
 
-
+const form = document.querySelector('.search-form')
 
 const input= document.querySelector('input')
 console.log(input)
@@ -15,11 +15,12 @@ console.log(btn)
 const gallery = document.querySelector('ul')
 console.log(gallery)
 
-input.addEventListener('input', debounce(searchPicture, 1000));
+form.addEventListener('submit', searchPicture);
 btn.addEventListener('click', addPictures);
 
 let page=1;
-function searchPicture(){
+function searchPicture(e){
+    e.preventDefault()
    gallery.innerHTML="" 
 apiService(input.value, page)
 .then(photos=>{console.log(photos)
@@ -27,7 +28,7 @@ apiService(input.value, page)
     const markup = photos.hits.map(photosTmpl).join('')
     console.log(markup)
     gallery.insertAdjacentHTML('beforeend', markup)
-    
+    btn.classList.remove('hidden')
 })
 }
 
