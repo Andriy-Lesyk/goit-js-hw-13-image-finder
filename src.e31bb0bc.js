@@ -2653,17 +2653,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var form = document.querySelector('.search-form');
 var input = document.querySelector('input');
 console.log(input);
 var btn = document.querySelector('button');
 console.log(btn);
 var gallery = document.querySelector('ul');
 console.log(gallery);
-input.addEventListener('input', (0, _lodash.default)(searchPicture, 1000));
+form.addEventListener('submit', searchPicture);
 btn.addEventListener('click', addPictures);
 var page = 1;
 
-function searchPicture() {
+function searchPicture(e) {
+  e.preventDefault();
   gallery.innerHTML = "";
   (0, _apiService.default)(input.value, page).then(function (photos) {
     console.log(photos);
@@ -2671,6 +2673,7 @@ function searchPicture() {
     var markup = photos.hits.map(_dish.default).join('');
     console.log(markup);
     gallery.insertAdjacentHTML('beforeend', markup);
+    btn.classList.remove('hidden');
   });
 }
 
@@ -2717,7 +2720,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63810" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50506" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
